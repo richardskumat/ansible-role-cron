@@ -1,49 +1,24 @@
-# Ansible weareinteractive.cron role
+ansible-role-cron
+=========
 
-[![Build Status](https://img.shields.io/travis/weareinteractive/ansible-cron.svg)](https://travis-ci.org/weareinteractive/ansible-cron)
-[![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.cron-blue.svg)](https://galaxy.ansible.com/weareinteractive/cron)
-[![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
-[![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-cron.svg)](https://github.com/weareinteractive/ansible-cron)
+This is a personal fork of https://github.com/weareinteractive/ansible-cron.
 
-> `weareinteractive.cron` is an [Ansible](http://www.ansible.com) role which:
->
-> * installs cron
-> * adds cron tasks
-> * configures service
+This is a role that
 
-**Note:**
+- installs cron
+- adds cron tasks
+- configures service
 
-> Since Ansible Galaxy supports [organization](https://www.ansible.com/blog/ansible-galaxy-2-release) now, this role has moved from `franklinkim.cron` to `weareinteractive.cron`!
+Requirements
+------------
 
-## Installation
+Ansible > 2.8
 
-Using `ansible-galaxy`:
+Role Variables
+--------------
 
-```shell
-$ ansible-galaxy install weareinteractive.cron
-```
+Here is a list of all the default variables for this role, which are also available in defaults/main.yml.
 
-Using `requirements.yml`:
-
-```yaml
-- src: weareinteractive.cron
-```
-
-Using `git`:
-
-```shell
-$ git clone https://github.com/weareinteractive/ansible-cron.git weareinteractive.cron
-```
-
-## Dependencies
-
-* Ansible >= 2.0
-
-## Variables
-
-Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
-
-```yaml
 ---
 # cron_tasks:
 #   - name: ...
@@ -75,13 +50,10 @@ cron_service_state: started
 #
 cron_vars: []
 
-```
+Handlers
 
-## Handlers
+These are the handlers that are defined in handlers/main.yml.
 
-These are the handlers that are defined in `handlers/main.yml`.
-
-```yaml
 ---
 # For more information about handlers see:
 # http://www.ansibleworks.com/docs/playbooks.html#handlers-running-operations-on-change
@@ -93,52 +65,38 @@ These are the handlers that are defined in `handlers/main.yml`.
     state: restarted
   when: cron_service_state != 'stopped'
 
-```
 
+Dependencies
+------------
 
-## Usage
+N/A
 
-This is an example playbook:
+Example Playbook
+----------------
 
-```yaml
 ---
 
 - hosts: all
-  become: yes
   roles:
-    - weareinteractive.cron
+    - richardskumat.ansible_role_cron
   vars:
     cron_tasks:
       - name: checking dirs
         special_time: daily
         job: "ls -alh > /dev/null"
 
-```
+License
+-------
 
+MIT
 
-## Testing
+Author Information
+------------------
 
-```shell
-$ git clone https://github.com/weareinteractive/ansible-cron.git
-$ cd ansible-cron
-$ make test
-```
+We Are Interactive original@2019
 
-## Contributing
-In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+Link: https://github.com/weareinteractive
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Richard Skumat fork@2019
 
-*Note: To update the `README.md` file please install and run `ansible-role`:*
-
-```shell
-$ gem install ansible-role
-$ ansible-role docgen
-```
-
-## License
-Copyright (c) We Are Interactive under the MIT license.
+Link: https://github.com/richardskumat/ansible-role-cron

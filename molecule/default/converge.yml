@@ -1,0 +1,28 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: richardskumat.ansible_role_cron
+  vars:
+    cron_tasks:
+      - name: echoing nonsense
+        special_time: weekly
+        job: "echo nonsense"
+        user: root
+
+      - name: echoing garbage task
+        special_time: monthly
+        job: "rm -r /tmp/garbage"
+        user: root
+        state: absent
+
+    cron_vars:
+      - name: 'PATH'
+        value: '/usr/bin:/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/local/sbin'
+        user: 'root'
+        state: present
+
+      - name: 'HOME'
+        value: '/root'
+        user: root
+        state: present

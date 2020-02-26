@@ -1,0 +1,38 @@
+---
+image: qwe1/dind-ansible-molecule:latest
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+  ROLE_NAME: ansible-role-cron
+  GALAXY_USERNAME: richardskumat
+  GALAXY_ROLENAME: ansible_role_cron
+
+
+services:
+  - docker:dind
+
+stages:
+  - test
+
+before_script:
+  - docker info
+  - ansible --version
+  - molecule --version
+  - cd ..
+  - cp -aR $ROLE_NAME $GALAXY_USERNAME.$GALAXY_ROLENAME
+  - cd $GALAXY_USERNAME.$GALAXY_ROLENAME
+
+test_d9:
+  stage: test
+  variables:
+    MOLECULE_DISTRO: "debian:9"
+  script:
+    - molecule test
+
+test_d10:
+  stage: test
+  variables:
+    MOLECULE_DISTRO: "debian:10"
+  script:
+    - molecule test

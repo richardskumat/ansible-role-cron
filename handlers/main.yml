@@ -1,7 +1,5 @@
 ---
-# For more information about handlers see:
-# http://www.ansibleworks.com/docs/playbooks.html#handlers-running-operations-on-change
-#
+# handlers file for cron
 
 - name: restart cron
   service:

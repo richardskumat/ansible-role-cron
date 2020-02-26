@@ -3,7 +3,7 @@
 - hosts: all
   become: yes
   roles:
-    - weareinteractive.cron
+    - richardskumat.ansible_role_cron
   vars:
     cron_tasks:
       - name: checking dirs

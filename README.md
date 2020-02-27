@@ -19,7 +19,7 @@ Role Variables
 
 Here is a list of all the default variables for this role, which are also available in defaults/main.yml.
 
----
+```
 # cron_tasks:
 #   - name: ...
 #     cron_file: ...
@@ -49,12 +49,12 @@ cron_service_state: started
 #     user: 'root'
 #
 cron_vars: []
-
+```
 Handlers
 
 These are the handlers that are defined in handlers/main.yml.
 
----
+```
 # For more information about handlers see:
 # http://www.ansibleworks.com/docs/playbooks.html#handlers-running-operations-on-change
 #
@@ -64,7 +64,7 @@ These are the handlers that are defined in handlers/main.yml.
     name: "{{ cron_service_name }}"
     state: restarted
   when: cron_service_state != 'stopped'
-
+```
 
 Dependencies
 ------------

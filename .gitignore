@@ -1,7 +1,4 @@
-*.log
-*.retry
-.DS_Store
-.vagrant
-.vscode
-.idea
 *.pyc
+# molecule making these symlinks folders?
+.cache
+

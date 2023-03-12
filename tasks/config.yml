@@ -1,7 +1,7 @@
 ---
 
 - name: Configuring cron tasks
-  cron:
+  ansible.builtin.cron:
     cron_file: "{{ item.cron_file | default(omit) }}"
     day: "{{ item.day | default(omit) }}"
     hour: "{{ item.hour | default(omit) }}"
@@ -16,7 +16,7 @@
   with_items: "{{ cron_tasks }}"
 
 - name: Configuring cron variables
-  cronvar:
+  community.general.cronvar:
     name: "{{ item.name | default(omit) }}"
     value: "{{ item.value | default(omit) }}"
     state: "{{ item.state | default(omit) }}"

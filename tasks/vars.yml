@@ -1,7 +1,7 @@
 ---
 
 - name: Set variables for Debian/Ubuntu
-  set_fact:
+  ansible.builtin.set_fact:
     cron_package: "{{ cron_package | default('cron') }}"
     cron_service_name: "{{ cron_service_name | default('cron') }}"
   when:

@@ -1,13 +1,13 @@
 ---
 
 - name: Ensuring unmasked service
-  systemd:
+  ansible.builtin.systemd:
     name: "{{ cron_service_name }}"
     masked: no
   when: ansible_service_mgr == "systemd"
 
 - name: Configuring service
-  service:
+  ansible.builtin.service:
     name: "{{ cron_service_name }}"
     state: "{{ cron_service_state }}"
     enabled: "{{ cron_service_enabled }}"

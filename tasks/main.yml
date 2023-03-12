@@ -1,7 +1,7 @@
 ---
 
 - name: Import vars tasks
-  import_tasks: vars.yml
+  ansible.builtin.import_tasks: vars.yml
   tags:
     - system
     - cron
@@ -9,7 +9,7 @@
     - cron-vars
 
 - name: Import installation tasks
-  import_tasks: install.yml
+  ansible.builtin.import_tasks: install.yml
   tags:
     - system
     - cron
@@ -17,7 +17,7 @@
     - cron-install
 
 - name: Import config tasks
-  import_tasks: config.yml
+  ansible.builtin.import_tasks: config.yml
   tags:
     - system
     - cron
@@ -25,7 +25,7 @@
     - cron-config
 
 - name: Import service tasks
-  import_tasks: service.yml
+  ansible.builtin.import_tasks: service.yml
   tags:
     - system
     - cron

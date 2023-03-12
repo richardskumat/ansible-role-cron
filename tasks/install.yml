@@ -1,7 +1,7 @@
 ---
 
 - name: Installing package
-  apt:
+  ansible.builtin.apt:
     update_cache: 'yes'
     name: "{{ cron_package }}"
     state: present
